@@ -1,0 +1,13 @@
+.search-input {
+    margin: auto;
+    width: 20%;
+    height: 3rem;
+    border-radius: 1rem;
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+
+  .icon {
+      font-size: 2rem;
+      margin: 0.5rem;
+  }

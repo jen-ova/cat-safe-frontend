@@ -3,21 +3,19 @@ import Plant from "./Plant";
 import "../styles/plantSearchResults.css";
 
 const PlantSearchResults = ({ results, hasSearched, filtered }) => {
-  console.log(filtered);
-
   if (results.length === 0 && hasSearched === false) {
     return null;
   }
   if (results.length === 0 && hasSearched === true) {
     return (
       <p className="search-results__no-results">
-        Sorry, no results exist for this search! Please try again.
+        Sorry, this plant is toxic to cats!
       </p>
     );
   } else {
     return (
       <div>
-        {filtered.map((plant) => (
+        {results.map((plant) => (
           <Plant
             key={plant.plantName}
             name={plant.plantName}

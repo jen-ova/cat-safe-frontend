@@ -1,18 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSeedling, faCat } from "@fortawesome/free-solid-svg-icons";
+import getPlants from "../requests/getPlants";
 import "../styles/plantSearch.css";
 
-const PlantSearch = ({
-  setSearchResults,
-  setHasSearched,
-  handleSearchChange,
-  search,
-  setNewSearch,
-}) => {
+const PlantSearch = ({ setSearchResults, setHasSearched }) => {
+  const [value, setValue] = useState();
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    setSearchResults(await getImages(value));
+    setSearchResults(getPlants(value));
     setHasSearched(true);
   };
 
@@ -24,13 +21,9 @@ const PlantSearch = ({
         <input
           className="search-input"
           type="text"
-          value={search}
-          onChange={(event) => setNewSearch(event.target.value)}
+          onChange={(event) => setValue(event.target.value)}
         />
-        <button
-          type="submit"
-          className="search-button"
-          data-testid="search__button">
+        <button type="submit" className="search-button">
           Is it cat safe?
         </button>
       </form>

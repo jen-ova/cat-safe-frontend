@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSeedling, faCat } from "@fortawesome/free-solid-svg-icons";
 import getPlants from "../requests/getPlants";
@@ -27,6 +28,7 @@ const PlantSearch = ({ setSearchResults, setHasSearched }) => {
           Is it cat safe?
         </button>
       </form>
+      <NavLink to="/allplants">All plants</NavLink>
     </div>
   );
 };

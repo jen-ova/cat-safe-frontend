@@ -3,3 +3,7 @@
     margin: 1rem;
     padding: 1rem;
 }
+
+.plant_card img {
+    max-width: 1000px;
+}

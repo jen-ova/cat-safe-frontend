@@ -19,7 +19,6 @@ const PlantSearch = () => {
                     className="search-input"
                     type="text"
                     placeholder="Enter plant name..."
-                    // onChange={(event) => setValue(event.target.value)}
                     onChange={onChange}
                     value={input}
                     onKeyDown={onKeyDown}

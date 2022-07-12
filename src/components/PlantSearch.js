@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSeedling, faCat } from "@fortawesome/free-solid-svg-icons";
 import "../styles/plantSearch.css";
@@ -7,8 +7,25 @@ import { FilterContext } from "./store/FilterProvider";
 import PlantSuggestionsList from "./PlantSuggestionsList";
 
 const PlantSearch = () => {
-    const { handleSubmit, showSuggestions, input, onKeyDown, onChange } =
-        useContext(FilterContext);
+    const {
+        showSuggestions,
+        input,
+        onKeyDown,
+        onChange,
+        setSearchResults,
+        getPlants,
+        value,
+        setHasSearched,
+    } = useContext(FilterContext);
+
+    let navigate = useNavigate();
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setSearchResults(getPlants(value));
+        setHasSearched(true);
+        navigate("../", { replace: true });
+    };
 
     return (
         <div>

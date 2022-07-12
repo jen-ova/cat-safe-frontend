@@ -80,12 +80,6 @@ const FilterProvider = ({ children }) => {
         }
     };
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        setSearchResults(getPlants(value));
-        setHasSearched(true);
-    };
-
     const filterData = {
         searchResults,
         setSearchResults,
@@ -94,7 +88,6 @@ const FilterProvider = ({ children }) => {
         value,
         setValue,
         getPlants,
-        handleSubmit,
         onChange,
         onKeyDown,
         input,

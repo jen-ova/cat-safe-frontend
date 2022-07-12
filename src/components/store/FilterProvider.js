@@ -95,6 +95,7 @@ const FilterProvider = ({ children }) => {
         filteredSuggestions,
         activeSuggestionIndex,
         onClick,
+        suggestions,
     };
 
     return (

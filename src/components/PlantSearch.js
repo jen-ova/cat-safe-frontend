@@ -16,6 +16,7 @@ const PlantSearch = () => {
         getPlants,
         value,
         setHasSearched,
+        suggestions,
     } = useContext(FilterContext);
 
     let navigate = useNavigate();
@@ -23,6 +24,17 @@ const PlantSearch = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setSearchResults(getPlants(value));
+        setHasSearched(true);
+        navigate("../", { replace: true });
+    };
+
+    const randomPlant =
+        suggestions[Math.floor(Math.random() * suggestions.length)];
+
+    const handleRandomSubmit = async (e) => {
+        e.preventDefault();
+        console.log(randomPlant);
+        setSearchResults(getPlants(randomPlant));
         setHasSearched(true);
         navigate("../", { replace: true });
     };
@@ -46,7 +58,14 @@ const PlantSearch = () => {
                     Is it cat safe?
                 </button>
             </form>
-            <NavLink to="/allplants">All plants</NavLink>
+            <NavLink to="/allplants">
+                <button>All plants</button>
+            </NavLink>
+            <form className="search-form" onSubmit={handleRandomSubmit}>
+                <button type="submit" className="search-button">
+                    Random Safe Plant
+                </button>
+            </form>
         </div>
     );
 };

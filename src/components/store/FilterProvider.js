@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import catPlants from "../../data/catplants.js";
 
 export const FilterContext = createContext();
@@ -79,8 +79,19 @@ const FilterProvider = ({ children }) => {
         }
     };
 
+    // localStorage logic
+    const loadedWishlist = localStorage.getItem("wishlist")
+        ? JSON.parse(localStorage.getItem("wishlist"))
+        : [];
+
     // wishlist logic starts
-    const [wishlist, setWishlist] = useState([]);
+    const [wishlist, setWishlist] = useState(loadedWishlist);
+
+    useEffect(() => {
+        const json = JSON.stringify(wishlist);
+        window.localStorage.setItem("wishlist", json);
+    }, [wishlist]);
+    // localStorage logic ends
 
     const addPlant = (plantName, scientificName, link) => {
         const newPlant = [...wishlist, { plantName, scientificName, link }];

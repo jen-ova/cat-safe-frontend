@@ -3,7 +3,6 @@ import { FilterContext } from "./store/FilterProvider";
 
 const WishlistItem = (plant) => {
     const { removePlant } = useContext(FilterContext);
-    console.log(plant.plant);
     return (
         <div>
             <p>{plant.plant.plantName}</p>

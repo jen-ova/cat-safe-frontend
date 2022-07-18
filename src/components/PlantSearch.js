@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSeedling, faCat } from "@fortawesome/free-solid-svg-icons";
 import "../styles/plantSearch.css";
 import { FilterContext } from "./store/FilterProvider";
 import PlantSuggestionsList from "./PlantSuggestionsList";
@@ -33,7 +31,6 @@ const PlantSearch = () => {
 
     const handleRandomSubmit = async (e) => {
         e.preventDefault();
-        console.log(randomPlant);
         setSearchResults(getPlants(randomPlant));
         setHasSearched(true);
         navigate("../", { replace: true });
@@ -41,8 +38,6 @@ const PlantSearch = () => {
 
     return (
         <div>
-            <FontAwesomeIcon icon={faSeedling} className="icon" />
-            <FontAwesomeIcon icon={faCat} className="icon" />
             <form className="search-form" onSubmit={handleSubmit}>
                 <input
                     className="search-input"

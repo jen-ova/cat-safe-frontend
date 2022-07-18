@@ -7,8 +7,6 @@ const PlantSearchResults = () => {
     const { hasSearched, searchResults, value, randomPlant } =
         useContext(FilterContext);
 
-    console.log(searchResults);
-    console.log(value);
     if (value === undefined && randomPlant === true && hasSearched === true) {
         return <p>Please enter a plant name!</p>;
     }

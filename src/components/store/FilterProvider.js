@@ -11,7 +11,6 @@ const FilterProvider = ({ children }) => {
     const [input, setInput] = useState("");
 
     const suggestions = catPlants.map((plant) => plant.plantName);
-    console.log(suggestions);
 
     const onChange = (e) => {
         const userInput = e.target.value;
@@ -80,6 +79,22 @@ const FilterProvider = ({ children }) => {
         }
     };
 
+    // wishlist logic starts
+    const [wishlist, setWishlist] = useState([]);
+
+    const addPlant = (plantName, scientificName, link) => {
+        const newPlant = [...wishlist, { plantName, scientificName, link }];
+        setWishlist(newPlant);
+    };
+
+    const removePlant = (index) => {
+        const newPlant = [...wishlist];
+        newPlant.splice(index, 1);
+        setWishlist(newPlant);
+        console.log("newPlant", newPlant);
+    };
+    // wishlist logic ends
+
     const filterData = {
         searchResults,
         setSearchResults,
@@ -96,6 +111,10 @@ const FilterProvider = ({ children }) => {
         activeSuggestionIndex,
         onClick,
         suggestions,
+        addPlant,
+        wishlist,
+        setWishlist,
+        removePlant,
     };
 
     return (
